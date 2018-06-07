@@ -12,7 +12,7 @@ class Server {
       false
     );
   }
-  loadApp(path) {
+  loadApp(path, opts) {
     let bridge = document.createElement('iframe');
     this.apps[path] = {
       bridge: bridge,
@@ -22,12 +22,14 @@ class Server {
     };
     bridge.src = path;
 
-    // style bridges hidden for web use
-    bridge.style.visibility = 'hidden';
-    bridge.style.height = '0px';
-    bridge.style.width = '0px';
-    bridge.style.position = 'absolute';
-    bridge.frameborder = 0;
+    if(!opts || opts && (opts.hidden || opts.hidden == undefined)) {
+      // style bridges hidden for web use
+      bridge.style.visibility = 'hidden';
+      bridge.style.height = '0px';
+      bridge.style.width = '0px';
+      bridge.style.position = 'absolute';
+      bridge.frameborder = 0;
+    }
 
     document.body.appendChild(bridge);
   }
@@ -65,7 +67,6 @@ class Server {
       // the callback needs to return to the appropriate app
       this.callbacks[data.callbackId] = event.origin;
     }
-
     this.sendMessage(data.owner, {
       type: MessageTypes.RECEIVE_MESSAGE,
       name: data.name,

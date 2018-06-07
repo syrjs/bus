@@ -4,6 +4,13 @@ import { Client } from '@syr/bus';
 let client = new Client('com.derek.mathApp');
 
 // register a method for this app
-client.fn('square', ({ num }) => {
-  return num * num;
+client.fn('double', ({ num }) => {
+  document.body.innerHTML = `double ${num}<br>${document.body.innerHTML}`
+  return num * 2;
+});
+
+// register a method for this app
+client.fn('halve', ({ num }) => {
+  document.body.innerHTML = `halve ${num}<br>${document.body.innerHTML}`
+  return num / 2;
 });

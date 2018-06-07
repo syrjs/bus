@@ -1,24 +1,33 @@
 import { Client } from '@syr/bus';
 
-// create a new client, with an endpoint
 let client = new Client('com.derek.testApp');
 
-// message another client's endpoint, pass arguments
-// recieve a return value
-client.message(
-  'syr://com.derek.mathApp/square',
-  {
-    num: 2,
-  },
-  returnValue => {
-    console.log(`Squared Valued Is: ${returnValue}`);
-  }
-);
+let input = document.createElement('input');
+input.value = 2;
+document.body.appendChild(input);
 
-// or as a promise
-let returnPromise = client.message('syr://com.derek.mathApp/square', {
-  num: 4,
-});
-returnPromise.then(result => {
-  console.log(result);
-});
+let button = document.createElement('button');
+button.textContent = "Double";
+document.body.appendChild(button);
+
+let halfButton = document.createElement('button');
+halfButton.textContent = "Halve";
+document.body.appendChild(halfButton);
+
+button.onclick = function() {
+  let returnPromise = client.message('syr://com.derek.mathApp/double', {
+    num: input.value,
+  });
+  returnPromise.then(result => {
+    input.value = result;
+  });
+}
+
+halfButton.onclick = function() {
+  let returnPromise = client.message('syr://com.derek.mathApp/halve', {
+    num: input.value,
+  });
+  returnPromise.then(result => {
+    input.value = result;
+  });
+}

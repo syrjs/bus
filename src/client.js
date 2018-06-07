@@ -46,6 +46,7 @@ class Client {
     let callback = this.callbacks[callbackId];
     let returnValue = JSON.parse(event.data.returnValue);
     callback.call(this, returnValue);
+    delete this.callbacks[callbackId];
   }
   handleRegisterMethod(event) {
     let { name, owner } = event.data;
