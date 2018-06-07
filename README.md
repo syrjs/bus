@@ -69,10 +69,9 @@ client.message(
 promise pattern
 
 ```javascript
-let returnPromise = client.message('syr://com.derek.mathApp/square', {
+client.message('syr://com.derek.mathApp/square', {
   num: 4,
-});
-returnPromise.then(result => {
+}).then(result => {
   console.log(`Squared Valued Is: ${result}`);
 });
 ```
