@@ -1,11 +1,9 @@
-import { Client } from './index.js';
+import { Client } from '@syr/bus';
 
-// create a new hypervisor client, with an endpoint
-let client = new Client('com.derek.otherApp');
+// create a new for this app client, with an endpoint
+let client = new Client('com.derek.mathApp');
 
-// send the client a message
-setTimeout(() => {
-  client.message('syr://com.derek.testApp/fooMethod', {
-    foo: 'bar',
-  });
-}, 500);
+// register a method for this app
+client.fn('square', ({ num }) => {
+  return num*num;
+});

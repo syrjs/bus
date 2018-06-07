@@ -24,6 +24,9 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.css'],
     modules: ['./node_modules'],
+    alias: {
+      '@syr/bus': path.resolve(__dirname, 'src/index.js'),
+    },
   },
   devtool: 'source-map',
   module: {

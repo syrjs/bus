@@ -2,19 +2,16 @@
   "name": "bus",
   "version": "1.0.0",
   "description": "used in the syr library to provide multi-tenant communications between applications and the platform",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "build": "npm run pretty; webpack",
-    "pretty": "prettier --single-quote --trailing-comma es5 --write \"*.js\";",
+    "pretty": "prettier --single-quote --trailing-comma es5 --write \"src/**/*.js\"",
     "serve": "webpack-dev-server --config webpack.config.js --content-base build/",
     "serve-app": "webpack-dev-server --config webpack.app.config.js --content-base build/",
     "serve-app-two": "webpack-dev-server --config webpack.app2.config.js --content-base build/"
   },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "graphql": "^0.13.2"
-  },
+  "author": "Syr Team",
+  "license": "MIT",
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",

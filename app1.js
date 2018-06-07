@@ -1,8 +1,16 @@
-import { Client } from './index.js';
+import { Client } from '@syr/bus';
 
-// create a new hypervisor client, with an endpoint
+// create a new client, with an endpoint
 let client = new Client('com.derek.testApp');
 
-client.fn('fooMethod', ({ foo }) => {
-  console.log(foo);
-});
+// message another client's endpoint, pass arguments
+// recieve a return value
+client.message(
+  'syr://com.derek.mathApp/square',
+  {
+    num: 2,
+  },
+  returnValue => {
+    console.log(`Squared Valued Is: ${returnValue}`);
+  }
+);
