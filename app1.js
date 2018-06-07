@@ -14,3 +14,11 @@ client.message(
     console.log(`Squared Valued Is: ${returnValue}`);
   }
 );
+
+// or as a promise
+let returnPromise = client.message('syr://com.derek.mathApp/square', {
+  num: 4,
+});
+returnPromise.then(result => {
+  console.log(result);
+});

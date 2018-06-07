@@ -5,5 +5,5 @@ let client = new Client('com.derek.mathApp');
 
 // register a method for this app
 client.fn('square', ({ num }) => {
-  return num*num;
+  return num * num;
 });

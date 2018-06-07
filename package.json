@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "build": "npm run pretty; webpack",
-    "pretty": "prettier --single-quote --trailing-comma es5 --write \"src/**/*.js\"",
+    "pretty": "prettier --single-quote --trailing-comma es5 --write \"src/**/*.js\"  \"*.js\"",
     "serve": "webpack-dev-server --config webpack.config.js --content-base build/",
     "serve-app": "webpack-dev-server --config webpack.app.config.js --content-base build/",
     "serve-app-two": "webpack-dev-server --config webpack.app2.config.js --content-base build/"
@@ -15,11 +15,16 @@
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
+    "babel-plugin-transform-regenerator": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "html-webpack-plugin": "^2.29.0",
     "html-webpack-template": "^6.1.0",
     "prettier": "^1.13.4",
+    "regenerator-runtime": "^0.11.1",
     "webpack": "^3.1.0",
     "webpack-dev-server": "^2.11"
+  },
+  "dependencies": {
+    "babel-polyfill": "^6.26.0"
   }
 }

@@ -5,7 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   // for now we set one entry for the main package.json entry
   entry: {
-    app: ['./serverDemo.js'],
+    app: ['babel-polyfill', './serverDemo.js'],
   },
 
   output: {
@@ -36,22 +36,9 @@ module.exports = {
         loader: 'json-loader',
       },
       {
-        test: /.js?$/,
+        test: /\.js?$/,
         loader: 'babel-loader',
         exclude: /node_modules/,
-        query: {
-          presets: [
-            [
-              'env',
-              {
-                targets: {
-                  browsers: ['Android >= 4', 'safari >= 7'],
-                  uglify: true,
-                },
-              },
-            ],
-          ],
-        },
       },
       {
         test: /\.(png|jpg|gif)$/,

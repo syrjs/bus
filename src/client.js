@@ -43,7 +43,7 @@ class Client {
   }
   handleReturn(event) {
     let { callbackId } = event.data;
-    let callback = this.callbacks[callbackId]
+    let callback = this.callbacks[callbackId];
     let returnValue = JSON.parse(event.data.returnValue);
     callback.call(this, returnValue);
   }
@@ -79,8 +79,17 @@ class Client {
   message(endPoint, message, cb) {
     let a = document.createElement('a');
     a.href = endPoint;
+    let [owner, methodName] = a.pathname.replace('//', '').split('/');
+
     if (a.protocol == 'syr:') {
-      let [owner, methodName] = a.pathname.replace('//', '').split('/');
+      if (!cb) {
+        return new Promise(resolve => {
+          cb = returnValue => {
+            resolve(returnValue);
+          };
+          this.enqueueMessage(owner, methodName, message, cb);
+        });
+      }
       this.enqueueMessage(owner, methodName, message, cb);
     }
   }
