@@ -75,3 +75,8 @@ client.message('syr://com.derek.mathApp/square', {
   console.log(`Squared Valued Is: ${result}`);
 });
 ```
+
+
+### example , three apps running visible in a web browser
+
+![syrbus](https://user-images.githubusercontent.com/328000/41087792-761a5c40-69f2-11e8-9887-1aec3ec1ce96.gif)

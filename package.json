@@ -8,7 +8,8 @@
     "pretty": "prettier --single-quote --trailing-comma es5 --write \"src/**/*.js\"  \"*.js\"",
     "serve": "webpack-dev-server --config webpack.config.js --content-base build/",
     "serve-app": "webpack-dev-server --config webpack.app.config.js --content-base build/",
-    "serve-app-two": "webpack-dev-server --config webpack.app2.config.js --content-base build/"
+    "serve-app-two": "webpack-dev-server --config webpack.app2.config.js --content-base build/",
+    "serve-app-three": "webpack-dev-server --config webpack.app3.config.js --content-base build/"
   },
   "author": "Syr Team",
   "license": "MIT",

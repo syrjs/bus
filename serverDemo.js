@@ -11,3 +11,6 @@ server.loadApp('http://localhost:8888',  {hidden:false});
 // np run serve-app-two
 // app two has no ui can be hidden
 server.loadApp('http://localhost:8889', {hidden:false});
+
+
+server.loadApp('http://localhost:8899', {hidden:false});

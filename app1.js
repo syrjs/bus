@@ -14,6 +14,33 @@ let halfButton = document.createElement('button');
 halfButton.textContent = "Halve";
 document.body.appendChild(halfButton);
 
+let squareButton = document.createElement('button');
+squareButton.textContent = "Square";
+document.body.appendChild(squareButton);
+
+let rootButton = document.createElement('button');
+rootButton.textContent = "Sqrt";
+document.body.appendChild(rootButton);
+
+
+rootButton.onclick = function() {
+  let returnPromise = client.message('syr://com.derek.scientificMathApp/root', {
+    num: input.value,
+  });
+  returnPromise.then(result => {
+    input.value = result;
+  });
+}
+
+squareButton.onclick = function() {
+  let returnPromise = client.message('syr://com.derek.scientificMathApp/square', {
+    num: input.value,
+  });
+  returnPromise.then(result => {
+    input.value = result;
+  });
+}
+
 button.onclick = function() {
   let returnPromise = client.message('syr://com.derek.mathApp/double', {
     num: input.value,
