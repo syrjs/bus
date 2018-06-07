@@ -1,5 +1,5 @@
 {
-  "name": "bus",
+  "name": "@syr/bus",
   "version": "1.0.0",
   "description": "used in the syr library to provide multi-tenant communications between applications and the platform",
   "main": "src/index.js",
