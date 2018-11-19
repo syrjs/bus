@@ -1,5 +1,5 @@
 import { Status, MessageTypes } from './enums';
-import { guid } from './utils';
+import { guid, serialize } from './utils';
 
 class Server {
   constructor() {
@@ -12,7 +12,7 @@ class Server {
       false
     );
   }
-  loadApp(path, opts) {
+  loadApp(path, opts, params) {
     let bridge = document.createElement('iframe');
     this.apps[path] = {
       bridge: bridge,
@@ -20,7 +20,12 @@ class Server {
       status: Status.UNREGISTERED,
       methods: {},
     };
-    bridge.src = path;
+
+    params.isSyrMultiplex = true;
+    let queryString = serialize(params);
+
+    // add params to source here
+    bridge.src = `${path}?${queryString}`;
 
     if(!opts || opts && (opts.hidden || opts.hidden == undefined)) {
       // style bridges hidden for web use
@@ -48,9 +53,13 @@ class Server {
         case MessageTypes.CALLBACK:
           this.handleCallback(event);
           break;
+        case MessageTypes.MULTIPLEX_MESSAGE:
+          this.handleMultiplex(event);
+          break;
       }
     }
   }
+  handleMultiplex(event) {}
   handleCallback(event) {
     let { callbackId, returnValue } = event.data;
     let owner = this.callbacks[callbackId];

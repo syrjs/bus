@@ -38,8 +38,14 @@ class Client {
         case MessageTypes.RETURN:
           this.handleReturn(event);
           break;
+        case MessageTypes.MULTIPLEX_MESSAGE:
+          this.handleMultiplex(event);
+          break;
       }
     }
+  }
+  handleMultiplex(event) {
+    global.SyrEvents.emit(event.data.message);
   }
   handleReturn(event) {
     let { callbackId } = event.data;

@@ -10,6 +10,7 @@ const MessageTypes = {
   SEND_MESSAGE: 'SEND_MESSAGE',
   CALLBACK: 'CALLBACK',
   RETURN: 'RETURN',
+  MULTIPLEX_MESSAGE: 'MULTIPLEX_MESSAGE'
 };
 
 export { Status, MessageTypes };
